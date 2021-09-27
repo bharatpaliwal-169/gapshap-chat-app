@@ -2,9 +2,10 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
-const INDEX = '../client';
+// const INDEX = '../client';
 
 const server = express()
+  // .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .use((req, res) => res.sendFile(path.resolve(__dirname,'build','index.html')))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
