@@ -21,7 +21,7 @@ export default function Sidebar({ id }) {
     <div style={{ width: '25%' }} className="d-flex flex-column">
       <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
         
-        <Nav variant="tabs" className="justify-content-center">
+        <Nav variant="pills" className="justify-content-center">
           <Nav.Item>
             <Nav.Link eventKey={CONVERSATIONS_KEY}>Conversations</Nav.Link>
           </Nav.Item>
@@ -30,7 +30,7 @@ export default function Sidebar({ id }) {
           </Nav.Item>
         </Nav>
         
-        <Tab.Content className="border-end overflow-auto flex-grow-1">
+        <Tab.Content className="border-end overflow-auto flex-grow-1 mt-3">
           {/* Flex-grow-1 takes care of scroll for our sidebar */}
           <Tab.Pane eventKey={CONVERSATIONS_KEY}>
             
@@ -45,10 +45,12 @@ export default function Sidebar({ id }) {
         </Tab.Content>
 
         <div className="p-2 border-top border-end small">
-          Your Id: <span className="text-muted">{id}</span>
+
+          <strong>Your Id: </strong>
+          <span className="text-muted">{id}</span>
         </div>
 
-        <Button onClick={() => setModalOpen(true)} className="rounded-0">
+        <Button onClick={() => setModalOpen(true)} className="rounded-0 btn-new">
           New {conversationsOpen ? 'Conversation' : 'Contact'}
         </Button>
 

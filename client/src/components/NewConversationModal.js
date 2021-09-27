@@ -11,14 +11,17 @@ export default function NewConversationModal({ closeModal }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-
-    createConversation(selectedContactIds)
-
+    console.log(selectedContactIds);
+    if(selectedContactIds.length <= 0) {
+      window.alert("Please add contacts to the chat")
+    }
+    else{
+      createConversation(selectedContactIds)
+    }
     closeModal()
   }
 
   function handleCheckboxChange(contactId) {
-
     setSelectedContactIds(oldSelectedContactIds => {
       if (oldSelectedContactIds.includes(contactId)) {
         return oldSelectedContactIds.filter(prevId => {
@@ -32,7 +35,7 @@ export default function NewConversationModal({ closeModal }) {
   }
 
   return (
-    <>
+    <React.Fragment>
       <Modal.Header closeButton>Create Conversation</Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -49,6 +52,6 @@ export default function NewConversationModal({ closeModal }) {
           <Button type="submit">Create</Button>
         </Form>
       </Modal.Body>
-    </>
+    </React.Fragment>
   )
 }

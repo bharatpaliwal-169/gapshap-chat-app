@@ -35,12 +35,14 @@ export default function OpenConversation() {
               <div
                 ref={lastMessage ? setRef : null}
                 key={index}
-                className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end align-items-end' : 'align-items-start'}`}
+                className={`my-2 d-flex flex-column ${message.fromMe ? 'align-self-end align-items-end' : 'align-items-start'}`}
               >
+                
                 <div
-                  className={`rounded px-2 py-1 ${message.fromMe ? 'bg-secondary text-white' : 'border'}`}>
+                  className={`bg-new rounded px-3 py-2 ${message.fromMe ? ' text-white' : 'border'}`}>
                   {message.text}
                 </div>
+
                 <div className={`text-muted small ${message.fromMe ? 'text-right' : ''}`}>
                   {message.fromMe ? 'You' : message.senderName}
                 </div>
@@ -61,7 +63,7 @@ export default function OpenConversation() {
               className="bg-light text-dark"
             />
             <InputGroup.Append>
-              <Button type="submit" className="ms-2" variant="outline-success">Send</Button>
+              <Button type="submit" className="ms-2 send" >Send</Button>
             </InputGroup.Append>
           </InputGroup>
         </Form.Group>

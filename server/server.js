@@ -1,4 +1,14 @@
-const io = require('socket.io')(5000);
+const express = require('express');
+const socketIO = require('socket.io');
+
+const PORT = process.env.PORT || 5000;
+const INDEX = '../client';
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const io = socketIO(server);
 
 io.on('connection', socket => {
   //get the user id
