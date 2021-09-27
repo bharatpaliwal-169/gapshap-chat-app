@@ -1,0 +1,6 @@
+{
+  "name": "React Chat App",
+  "description": "Gapshap a chat app",
+  "repository": "https://github.com/bharatpaliwal-169/gapshap-chat-app",
+  "keywords": ["node", "websocket", "socket.io"]
+}
