@@ -1,15 +1,17 @@
+const cors = require('cors');
+const http = require('http');
+const socketio = require('socket.io');
 const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
-const PORT = process.env.PORT || 5000;
-// const INDEX = '../client';
 
-const server = express()
-  // .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .use((req, res) => res.sendFile(path.resolve(__dirname,'build','index.html')))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+// const PORT = process.env.PORT || 5000;
 
-const io = socketIO(server);
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+app.use(cors());
+
+
 
 io.on('connection', socket => {
   //get the user id
@@ -30,3 +32,4 @@ io.on('connection', socket => {
     })
   })
 })
+server.listen(process.env.PORT || 5000, () => console.log(`Server has started.`));

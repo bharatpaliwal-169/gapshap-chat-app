@@ -12,7 +12,7 @@ export function SocketProvider({ id, children }) {
 
   useEffect(() => {
     const newSocket = io(
-      'http://localhost:5000',
+      'https://pure-brook-44279.herokuapp.com/',
       { query: { id },
         transports : ['websocket'] 
       }
